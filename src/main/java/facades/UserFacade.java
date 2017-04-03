@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import security.IUser;
+import security.PasswordStorage;
 
 public class UserFacade implements IUserFacade {
 
@@ -38,4 +39,15 @@ public class UserFacade implements IUserFacade {
     return user != null && password.equals(user.getPassword()) ? user.getRolesAsStrings() : null;  
   }
 
+  public void createUser(String userName, String password) throws PasswordStorage.CannotPerformOperationException{
+     EntityManager em = emf.createEntityManager();
+     User user = new User(userName, password);
+     try {
+         em.getTransaction().begin();
+         em.persist(user);
+         em.getTransaction().commit();
+     } finally {
+         em.close();
+     }
+  }
 }
