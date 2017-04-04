@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="2" name="test.InitialSeedRestIntegrationTest" time="4.822" errors="0" skipped="0">
+<testsuite tests="5" failures="2" name="test.InitialSeedRestIntegrationTest" time="4.593" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_101\jre\bin"/>
@@ -61,9 +61,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="test.InitialSeedRestIntegrationTest" name="adminNotAuthenticated" time="2.793"/>
-  <testcase classname="test.InitialSeedRestIntegrationTest" name="testRestNoAuthenticationRequired" time="0.046"/>
-  <testcase classname="test.InitialSeedRestIntegrationTest" name="tesRestForAdmin" time="1.827">
+  <testcase classname="test.InitialSeedRestIntegrationTest" name="adminNotAuthenticated" time="2.792"/>
+  <testcase classname="test.InitialSeedRestIntegrationTest" name="testRestNoAuthenticationRequired" time="0.031"/>
+  <testcase classname="test.InitialSeedRestIntegrationTest" name="tesRestForAdmin" time="1.676">
     <failure message="1 expectation failed.
 Expected status code &lt;200&gt; doesn&apos;t match actual status code &lt;403&gt;.
 " type="java.lang.AssertionError">java.lang.AssertionError: 1 expectation failed.
@@ -127,20 +127,20 @@ Expected status code &lt;200&gt; doesn&apos;t match actual status code &lt;403&g
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 </failure>
     <system-out>{username: &quot;admin&quot;, password: &quot;test&quot;}
-[EL Info]: 2017-04-03 15:45:44.141--ServerSession(1731728395)--EclipseLink, version: Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd
-[EL Info]: connection: 2017-04-03 15:45:44.454--ServerSession(1731728395)--file:/C:/Users/Staal/Documents/CA3/Sem3CA3-Backend/target/classes/_pu_development login successful
+[EL Info]: 2017-04-04 10:39:31.159--ServerSession(1704551777)--EclipseLink, version: Eclipse Persistence Services - 2.5.2.v20140319-9ad6abd
+[EL Info]: connection: 2017-04-04 10:39:31.487--ServerSession(1704551777)--file:/C:/Users/Staal/Documents/CA3/Sem3CA3-Backend/target/classes/_pu_development login successful
 Token: null
 </system-out>
-    <system-err>Mon Apr 03 15:45:44 CEST 2017 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
-Mon Apr 03 15:45:44 CEST 2017 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
-Apr 03, 2017 3:45:44 PM cors.CorsResponseFilter filter
+    <system-err>Tue Apr 04 10:39:31 CEST 2017 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Tue Apr 04 10:39:31 CEST 2017 WARN: Establishing SSL connection without server&apos;s identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn&apos;t set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to &apos;false&apos;. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Apr 04, 2017 10:39:31 AM cors.CorsResponseFilter filter
 INFO: Executing REST response filter
-Apr 03, 2017 3:45:44 PM cors.CorsResponseFilter filter
+Apr 04, 2017 10:39:31 AM cors.CorsResponseFilter filter
 INFO: Executing REST response filter
 </system-err>
   </testcase>
-  <testcase classname="test.InitialSeedRestIntegrationTest" name="userNotAuthenticated" time="0.062"/>
-  <testcase classname="test.InitialSeedRestIntegrationTest" name="testRestForUser" time="0.094">
+  <testcase classname="test.InitialSeedRestIntegrationTest" name="userNotAuthenticated" time="0.032"/>
+  <testcase classname="test.InitialSeedRestIntegrationTest" name="testRestForUser" time="0.062">
     <failure message="1 expectation failed.
 Expected status code &lt;200&gt; doesn&apos;t match actual status code &lt;403&gt;.
 " type="java.lang.AssertionError">java.lang.AssertionError: 1 expectation failed.
@@ -204,9 +204,9 @@ Expected status code &lt;200&gt; doesn&apos;t match actual status code &lt;403&g
     <system-out>{username: &quot;user&quot;, password: &quot;test&quot;}
 Token: null
 </system-out>
-    <system-err>Apr 03, 2017 3:45:44 PM cors.CorsResponseFilter filter
+    <system-err>Apr 04, 2017 10:39:31 AM cors.CorsResponseFilter filter
 INFO: Executing REST response filter
-Apr 03, 2017 3:45:45 PM cors.CorsResponseFilter filter
+Apr 04, 2017 10:39:31 AM cors.CorsResponseFilter filter
 INFO: Executing REST response filter
 </system-err>
   </testcase>
