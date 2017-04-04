@@ -1,14 +1,28 @@
 package entity;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author madsr
  */
-public class Book {
-    int id; 
+
+@Entity(name = "BOOK")
+public class Book implements Serializable {
+    
+    @Id
+    int id;
+    
     String title; 
     String info; 
     String moreInfo; 
+
+    public Book()
+    {
+    }
     
     public Book(int id, String t, String i, String mi) {
         this.id = id; 
