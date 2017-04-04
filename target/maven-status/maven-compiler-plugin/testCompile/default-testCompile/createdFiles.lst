@@ -1,7 +1,1 @@
-<<<<<<< HEAD
-test/plainDemoTest.class
-test/InitialSeedRestIntegrationTest.class
 test/utils/EmbeddedTomcat.class
-=======
-test\utils\EmbeddedTomcat.class
->>>>>>> 94dddf0bacbe0d9e000cdf2ca8d16169190b473e

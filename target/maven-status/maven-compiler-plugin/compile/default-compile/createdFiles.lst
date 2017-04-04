@@ -17,12 +17,14 @@ entity/Role.class
 security/PasswordStorage.class
 security/Secret.class
 utils/CreateSchema.class
+facades/BookFacade.class
 entity/User.class
 security/Login.class
 httpErrors/NotFoundExceptionMapper.class
 facades/UserFacade.class
 entity/Role_.class
 security/JWTAuthenticationFilter$1.class
+entity/Book.class
 cors/CorsRequestFilter.class
 rest/User.class
 security/IUser.class
