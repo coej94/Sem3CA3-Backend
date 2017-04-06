@@ -14,11 +14,10 @@ import javax.persistence.Id;
 @Entity(name = "BOOK")
 public class Book implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final Long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String title;
     private String info;
     private String moreInfo;
@@ -26,8 +25,7 @@ public class Book implements Serializable {
     public Book() {
     }
 
-    public Book(int id, String t, String i, String mi) {
-        this.id = id;
+    public Book(String t, String i, String mi) {
         title = t;
         info = i;
         moreInfo = mi;

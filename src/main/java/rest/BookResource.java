@@ -33,7 +33,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("Book")
 @RolesAllowed("User")
-public class Book {
+public class BookResource {
 
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -45,7 +45,7 @@ public class Book {
     /**
      * Creates a new instance of BookResource
      */
-    public Book() {
+    public BookResource() {
     }
     
     @GET
