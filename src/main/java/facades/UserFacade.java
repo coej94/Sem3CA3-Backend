@@ -42,7 +42,6 @@ public class UserFacade implements IUserFacade {
         System.out.println(user.getPassword());
         if (user != null) {
             try {
-                //if (password.equals(user.getPassword())) {
                 if (PasswordStorage.verifyPassword(password, user.getPassword())) {
                     System.out.println(user.getRolesAsStrings());
                     return user.getRolesAsStrings();
