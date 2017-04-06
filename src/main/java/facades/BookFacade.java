@@ -10,10 +10,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-/**
- *
- * @author madsr
- */
 public class BookFacade
 {
 
@@ -40,27 +36,33 @@ public class BookFacade
         }
     }
     
-    public List<Book> getBooks(String b) {
+    public List<Book> getBooks() {
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        
-        try {
-            
-        return em.createQuery("SELECT u FROM book WHERE name = " + b).getResultList();
+        try {            
+        return em.createQuery("SELECT b FROM Book b").getResultList();
         } finally {
-            em.getTransaction().commit();
             em.close();
         }
     }
     
-    public void DeleteBook(String b)
+    public Book getBookByID(int id) {
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            return em.find(Book.class, id);
+        } finally {
+            em.close();
+        }
+    }
+    
+    public void DeleteBook(int id)
     {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin(); 
         
          try {
             em.getTransaction().begin();
-            Book bk = em.find(Book.class, b);
+            Book bk = em.find(Book.class, id);
             em.remove(bk);
             em.getTransaction().commit();
         } finally {
@@ -68,15 +70,15 @@ public class BookFacade
         }
     }
     
-    public void UpdateBook(Book b)
+    public Book UpdateBook(Book b)
     {
         EntityManager em = emf.createEntityManager(); 
         try {
-
             em.getTransaction().begin();
             Book bk = em.find(Book.class, b.getId());
-            bk = em.merge(b);
+            b = em.merge(bk);
             em.getTransaction().commit();
+            return b;
         } finally {
             em.close();
         }

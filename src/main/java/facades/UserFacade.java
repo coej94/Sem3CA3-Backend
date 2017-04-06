@@ -46,7 +46,7 @@ public class UserFacade implements IUserFacade {
                 if (PasswordStorage.verifyPassword(password, user.getPassword())) {
                     System.out.println(user.getRolesAsStrings());
                     return user.getRolesAsStrings();
-                    
+   
                 }
                 
             } catch (PasswordStorage.CannotPerformOperationException ex) {
@@ -71,7 +71,18 @@ public class UserFacade implements IUserFacade {
             em.close();
         }
     }
-
+    
+//    public void deleteUser(User user){
+//        EntityManager em = emf.createEntityManager();
+//        try{
+//            em.getTransaction().begin();
+//            em.remove(user);
+//            em.getTransaction().commit();
+//            System.out.println("User " + user + "is now deleted");
+//        } finally {
+//            em.close();
+//        }
+//    }
     public static void main(String[] args) {
         UserFacade uf = new UserFacade(Persistence.createEntityManagerFactory("pu_development", null));
         List<String> hej = uf.authenticateUser("user", "test");
