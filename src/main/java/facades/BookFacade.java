@@ -25,13 +25,13 @@ public class BookFacade
 
     public void addBook(Book b) {
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
         
         try {
+            em.getTransaction().begin();
             em.persist(b);
+            em.getTransaction().commit();
         } finally
         {
-            em.getTransaction().commit();
             em.close();
         }
     }

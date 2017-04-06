@@ -16,5 +16,7 @@ public class CreateSchema {
         
         Persistence.createEntityManagerFactory("pu_development");
         Persistence.generateSchema("pu_development", null);
+        
+        
     }
 }
