@@ -38,54 +38,6 @@ public class User {
 //    return "[{\"name\":\"Liverpool\", \"url\":\"http://www.liverpoolfc.com\"},\n" +
 //" {\"name\":\"Manchester United\",\"url\" : \"http://www.manutd.com/\"}]"; 
 //  }
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public String getAllBooks(){
-      List<Book> lb = f.getBooks();
-      if(lb == null){
-          throw new NotFoundException("No books available");
-      }
-      String json = gson.toJson(lb); 
-      return json;
-  }
   
-  
-  @POST
-  @Path("/add")
-  @Consumes(MediaType.APPLICATION_JSON)
-  @Produces(MediaType.APPLICATION_JSON)
-  public Response addBook(String json){
-      Book b = gson.fromJson(json, Book.class);
-      try{
-          f.addBook(b);
-      } catch(Exception e) {
-          e.printStackTrace();
-          return Response.status(500).entity("Error in addPerson").build();
-      }
-      return Response.status(200).entity(gson.toJson(b)).build();
-  }
-  
-  
-  @DELETE
-  @Path("{id}")
-  @Consumes(MediaType.APPLICATION_JSON)
-  public void deleteBook(@PathParam("id") int id){
-     Book b = f.getBookByID(id);
-     if(b!=null){
-         f.DeleteBook(b.getId());
-     } else {
-         throw new NotFoundException();
-     }
-  }
-  
-  @PUT
-    @Path("editBook")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String editPerson(String json) {
-        Book b = gson.fromJson(json, Book.class);
-        f.UpdateBook(b);
-        return gson.toJson(b);
-    }
  
 }
