@@ -20,17 +20,17 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("demouser")
-@RolesAllowed("User")
+//@RolesAllowed("User")
 public class User {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     BookFacade f = new BookFacade(Persistence.createEntityManagerFactory("pu_development"));
   
-//  @GET
-//  @Produces(MediaType.APPLICATION_JSON)
-//  public String getSomething(){
-//    return "{\"message\" : \"Hello User from Server (Accesible by only authenticated USERS)\"}"; 
-//  }
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  public String getSomething(){
+    return "{\"message\" : \"Hello User from Server (Accesible by only authenticated USERS)\"}"; 
+  }
 //  @GET
 //  @Path("footballclubs")
 //  @Produces(MediaType.APPLICATION_JSON)
