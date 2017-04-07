@@ -10,7 +10,6 @@ import com.google.gson.GsonBuilder;
 import entity.Book;
 import facades.BookFacade;
 import java.util.List;
-import javax.annotation.security.RolesAllowed;
 import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -32,10 +31,9 @@ import javax.ws.rs.core.Response;
  * @author Staal
  */
 @Path("Book")
-@RolesAllowed("User")
 public class BookResource {
-
-    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    
+     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     BookFacade f = new BookFacade(Persistence.createEntityManagerFactory("pu_development"));
 
@@ -47,9 +45,18 @@ public class BookResource {
      */
     public BookResource() {
     }
+
+    /**
+     * Retrieves representation of an instance of rest.BookResource
+     *
+     * @return an instance of java.lang.String
+     */
     
+//    @GET
+//    public String test(){
+//        return "hej";
+//    }
     @GET
-    @Path("/books")
     @Produces(MediaType.APPLICATION_JSON)
     public String getAllBooks() {
         List<Book> lb = f.getBooks();
@@ -59,41 +66,42 @@ public class BookResource {
         String json = gson.toJson(lb);
         return json;
     }
+//
+//    @POST
+//    @Path("/add")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response addBook(String json) {
+//        Book b = gson.fromJson(json, Book.class);
+//        try {
+//            f.addBook(b);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return Response.status(500).entity("Error in addPerson").build();
+//        }
+//        return Response.status(200).entity(gson.toJson(b)).build();
+//    }
+//
+//    @DELETE
+//    @Path("{id}")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public void deleteBook(@PathParam("id") int id) {
+//        Book b = f.getBookByID(id);
+//        if (b != null) {
+//            f.DeleteBook(b.getId());
+//        } else {
+//            throw new NotFoundException();
+//        }
+//    }
+//
+//    @PUT
+//    @Path("editBook")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public String editPerson(String json) {
+//        Book b = gson.fromJson(json, Book.class);
+//        f.UpdateBook(b);
+//        return gson.toJson(b);
+//    }
 
-    @POST
-    @Path("/add")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response addBook(String json) {
-        Book b = gson.fromJson(json, Book.class);
-        try {
-            f.addBook(b);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Response.status(500).entity("Error in addPerson").build();
-        }
-        return Response.status(200).entity(gson.toJson(b)).build();
-    }
-
-    @DELETE
-    @Path("{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void deleteBook(@PathParam("id") int id) {
-        Book b = f.getBookByID(id);
-        if (b != null) {
-            f.DeleteBook(b.getId());
-        } else {
-            throw new NotFoundException();
-        }
-    }
-
-    @PUT
-    @Path("editBook")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String editPerson(String json) {
-        Book b = gson.fromJson(json, Book.class);
-        f.UpdateBook(b);
-        return gson.toJson(b);
-    }
 }

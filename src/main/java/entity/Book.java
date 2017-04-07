@@ -6,12 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author madsr
  */
-@Entity(name = "BOOK")
+@Entity(name = "Book")
 public class Book implements Serializable {
 
     private static final Long serialVersionUID = 1L;
