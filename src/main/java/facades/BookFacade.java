@@ -60,9 +60,8 @@ public class BookFacade {
 
     public void DeleteBook(int id) {
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-
         try {
+        em.getTransaction().begin();
             em.getTransaction().begin();
             Book bk = em.find(Book.class, id);
             em.remove(bk);

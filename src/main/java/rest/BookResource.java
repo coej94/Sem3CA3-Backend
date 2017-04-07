@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import entity.Book;
 import facades.BookFacade;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -31,6 +32,7 @@ import javax.ws.rs.core.Response;
  * @author Staal
  */
 @Path("Book")
+@RolesAllowed("User")
 public class BookResource {
     
      private Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -66,22 +68,21 @@ public class BookResource {
         String json = gson.toJson(lb);
         return json;
     }
-//
-//    @POST
-//    @Path("/add")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response addBook(String json) {
-//        Book b = gson.fromJson(json, Book.class);
-//        try {
-//            f.addBook(b);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return Response.status(500).entity("Error in addPerson").build();
-//        }
-//        return Response.status(200).entity(gson.toJson(b)).build();
-//    }
-//
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addBook(String json) {
+        Book b = gson.fromJson(json, Book.class);
+        try {
+            f.addBook(b);   
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(500).entity("Error in addPerson").build();
+        }
+        return Response.status(200).entity(gson.toJson(b)).build();
+    }
+
 //    @DELETE
 //    @Path("{id}")
 //    @Consumes(MediaType.APPLICATION_JSON)
